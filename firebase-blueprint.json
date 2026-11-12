@@ -1,0 +1,251 @@
+{
+  "entities": {
+    "SiteSettings": {
+      "title": "SiteSettings",
+      "description": "Global website configuration, business contact details, SEO, and visual theme settings.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "companyName": { "type": "string" },
+        "phoneDisplay": { "type": "string" },
+        "phoneTel": { "type": "string" },
+        "phoneLink": { "type": "string" },
+        "emailDisplay": { "type": "string" },
+        "emailLink": { "type": "string" },
+        "address": { "type": "string" },
+        "businessHours": { "type": "string" },
+        "emergencyNotice": { "type": "string" },
+        "primaryColor": { "type": "string" },
+        "accentColor": { "type": "string" },
+        "borderRadius": { "type": "string" },
+        "seoTitle": { "type": "string" },
+        "seoDescription": { "type": "string" },
+        "canonicalUrl": { "type": "string" },
+        "robotsIndexing": { "type": "boolean" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["companyName", "phoneDisplay", "emailDisplay"]
+    },
+    "HomepageSections": {
+      "title": "HomepageSections",
+      "description": "Configuration and editable copy for individual homepage sections.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "heroHeading": { "type": "string" },
+        "heroSubheading": { "type": "string" },
+        "heroDescription": { "type": "string" },
+        "heroBgImage": { "type": "string" },
+        "heroPrimaryCtaText": { "type": "string" },
+        "heroPrimaryCtaUrl": { "type": "string" },
+        "heroSecondaryCtaText": { "type": "string" },
+        "heroSecondaryCtaUrl": { "type": "string" },
+        "servicesHeading": { "type": "string" },
+        "servicesDescription": { "type": "string" },
+        "whyUsHeading": { "type": "string" },
+        "whyUsDescription": { "type": "string" },
+        "howItWorksHeading": { "type": "string" },
+        "contactCtaHeading": { "type": "string" },
+        "contactCtaDescription": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["heroHeading"]
+    },
+    "Page": {
+      "title": "Page",
+      "description": "Customizable content page.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "slug": { "type": "string" },
+        "metaTitle": { "type": "string" },
+        "metaDescription": { "type": "string" },
+        "content": { "type": "string" },
+        "isPublished": { "type": "boolean" },
+        "order": { "type": "number" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["title", "slug"]
+    },
+    "HvacService": {
+      "title": "HvacService",
+      "description": "An HVAC service offering.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "slug": { "type": "string" },
+        "tagline": { "type": "string" },
+        "shortDescription": { "type": "string" },
+        "fullDescription": { "type": "string" },
+        "category": { "type": "string" },
+        "highlights": { "type": "array" },
+        "commonSigns": { "type": "array" },
+        "imageSrc": { "type": "string" },
+        "iconName": { "type": "string" },
+        "order": { "type": "number" },
+        "isPublished": { "type": "boolean" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["name", "slug", "shortDescription"]
+    },
+    "ServiceArea": {
+      "title": "ServiceArea",
+      "description": "Geographical region served by Iwebpro.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "regionName": { "type": "string" },
+        "countyOrZone": { "type": "string" },
+        "coveredCities": { "type": "array" },
+        "responseStandard": { "type": "string" },
+        "isPublished": { "type": "boolean" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["regionName", "countyOrZone"]
+    },
+    "Testimonial": {
+      "title": "Testimonial",
+      "description": "Customer feedback and testimonial review.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "customerName": { "type": "string" },
+        "clientType": { "type": "string" },
+        "serviceReceived": { "type": "string" },
+        "reviewText": { "type": "string" },
+        "rating": { "type": "number" },
+        "isFeatured": { "type": "boolean" },
+        "isPublished": { "type": "boolean" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["customerName", "reviewText"]
+    },
+    "FaqItem": {
+      "title": "FaqItem",
+      "description": "Frequently asked question entry.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "question": { "type": "string" },
+        "answer": { "type": "string" },
+        "category": { "type": "string" },
+        "order": { "type": "number" },
+        "isPublished": { "type": "boolean" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["question", "answer"]
+    },
+    "ContactSubmission": {
+      "title": "ContactSubmission",
+      "description": "Customer lead or service booking inquiry.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "referenceNo": { "type": "string" },
+        "customerName": { "type": "string" },
+        "phone": { "type": "string" },
+        "email": { "type": "string" },
+        "serviceRequired": { "type": "string" },
+        "propertyType": { "type": "string" },
+        "urgency": { "type": "string" },
+        "preferredDate": { "type": "string" },
+        "preferredTime": { "type": "string" },
+        "serviceCity": { "type": "string" },
+        "message": { "type": "string" },
+        "status": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "assignedTechnician": { "type": "string" },
+        "technicianNotes": { "type": "string" }
+      },
+      "required": ["customerName", "phone", "serviceRequired", "message"]
+    },
+    "MediaItem": {
+      "title": "MediaItem",
+      "description": "Uploaded image or asset record.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "fileName": { "type": "string" },
+        "fileUrl": { "type": "string" },
+        "fileType": { "type": "string" },
+        "fileSize": { "type": "number" },
+        "uploadedAt": { "type": "string" }
+      },
+      "required": ["fileName", "fileUrl"]
+    },
+    "AdminUser": {
+      "title": "AdminUser",
+      "description": "Administrator account with CMS access.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "role": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["uid", "email"]
+    },
+    "ActivityLog": {
+      "title": "ActivityLog",
+      "description": "Audit record of content edits and admin actions.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "adminEmail": { "type": "string" },
+        "action": { "type": "string" },
+        "entity": { "type": "string" },
+        "details": { "type": "string" },
+        "timestamp": { "type": "string" }
+      },
+      "required": ["action", "entity", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/siteSettings/{settingId}": {
+      "schema": "SiteSettings",
+      "description": "Global website settings, brand information, and theme parameters."
+    },
+    "/homepageSections/{sectionId}": {
+      "schema": "HomepageSections",
+      "description": "Sections and copy for the homepage."
+    },
+    "/pages/{pageId}": {
+      "schema": "Page",
+      "description": "Customizable pages and page builder records."
+    },
+    "/services/{serviceId}": {
+      "schema": "HvacService",
+      "description": "HVAC service offerings and diagnostic specs."
+    },
+    "/serviceAreas/{areaId}": {
+      "schema": "ServiceArea",
+      "description": "Geographical zones and covered municipalities."
+    },
+    "/testimonials/{testimonialId}": {
+      "schema": "Testimonial",
+      "description": "Customer reviews and feedback."
+    },
+    "/faqs/{faqId}": {
+      "schema": "FaqItem",
+      "description": "Frequently asked questions."
+    },
+    "/contactSubmissions/{submissionId}": {
+      "schema": "ContactSubmission",
+      "description": "Contact form submissions and lead inquiries."
+    },
+    "/media/{mediaId}": {
+      "schema": "MediaItem",
+      "description": "Media library assets."
+    },
+    "/admins/{adminId}": {
+      "schema": "AdminUser",
+      "description": "Administrator authorizations."
+    },
+    "/activityLogs/{logId}": {
+      "schema": "ActivityLog",
+      "description": "Admin actions audit log."
+    }
+  }
+}
