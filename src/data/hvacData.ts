@@ -33,7 +33,7 @@ export const HVAC_SERVICES: HvacService[] = [
       'Inconsistent room temperatures or high electric bills',
       'Outdated R-22 refrigerant system requiring replacement'
     ],
-    imageSrc: '/src/assets/images/ac_cooling_interior_1794427371083.jpg',
+    imageSrc: '/assets/images/ac_cooling_interior_1794427371083.jpg',
     iconName: 'Snowflake'
   },
   {
@@ -55,7 +55,7 @@ export const HVAC_SERVICES: HvacService[] = [
       'Water pooling around the indoor or outdoor unit',
       'Unit short-cycling or tripping the electrical breaker'
     ],
-    imageSrc: '/src/assets/images/hero_hvac_technician_1794427369059.jpg',
+    imageSrc: '/assets/images/hero_hvac_technician_1794427369059.jpg',
     iconName: 'Wrench'
   },
   {
@@ -77,7 +77,7 @@ export const HVAC_SERVICES: HvacService[] = [
       'Uneven heating with cold spots in specific rooms',
       'System age exceeding safe operational lifespan'
     ],
-    imageSrc: '/src/assets/images/furnace_installation_1794427370552.jpg',
+    imageSrc: '/assets/images/furnace_installation_1794427370552.jpg',
     iconName: 'Flame'
   },
   {
@@ -99,7 +99,7 @@ export const HVAC_SERVICES: HvacService[] = [
       'Strange burning odors or unusual metallic noises',
       'Thermostat fails to trigger heating cycles properly'
     ],
-    imageSrc: '/src/assets/images/furnace_installation_1794427370552.jpg',
+    imageSrc: '/assets/images/furnace_installation_1794427370552.jpg',
     iconName: 'ShieldAlert'
   },
   {
@@ -121,7 +121,7 @@ export const HVAC_SERVICES: HvacService[] = [
       'Slight increase in monthly utility bills',
       'Dust accumulation around supply registers'
     ],
-    imageSrc: '/src/assets/images/hero_hvac_technician_1794427369059.jpg',
+    imageSrc: '/assets/images/hero_hvac_technician_1794427369059.jpg',
     iconName: 'CheckCircle2'
   },
   {
@@ -143,7 +143,7 @@ export const HVAC_SERVICES: HvacService[] = [
       'Rattling, popping, or banging noises on start-up',
       'Persistent dry air, stale odor, or carbon detector alerts'
     ],
-    imageSrc: '/src/assets/images/furnace_installation_1794427370552.jpg',
+    imageSrc: '/assets/images/furnace_installation_1794427370552.jpg',
     iconName: 'Thermometer'
   },
   {
@@ -165,7 +165,7 @@ export const HVAC_SERVICES: HvacService[] = [
       'Whistling or rattling air sounds inside wall cavities',
       'Visible gaps or disconnected flexible ducts in attic or crawl space'
     ],
-    imageSrc: '/src/assets/images/ac_cooling_interior_1794427371083.jpg',
+    imageSrc: '/assets/images/ac_cooling_interior_1794427371083.jpg',
     iconName: 'Wind'
   },
   {
@@ -187,7 +187,7 @@ export const HVAC_SERVICES: HvacService[] = [
       'High seasonal utility bills on commercial power tariffs',
       'Compliance or inspection issues with commercial air exchange'
     ],
-    imageSrc: '/src/assets/images/commercial_rooftop_hvac_1794427369351.jpg',
+    imageSrc: '/assets/images/commercial_rooftop_hvac_1794427369351.jpg',
     iconName: 'Building2'
   }
 ];

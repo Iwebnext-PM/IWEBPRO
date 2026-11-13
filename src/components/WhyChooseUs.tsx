@@ -1,5 +1,6 @@
 import { Layers, Building, ShieldCheck, Headphones, Clock, Zap, Phone, Check } from 'lucide-react';
 import { useCms } from '../context/CmsContext';
+import { normalizeImageUrl, handleImageError } from '../utils/imageUtils';
 
 interface WhyChooseUsProps {
   onOpenQuoteModal: () => void;
@@ -80,10 +81,11 @@ export default function WhyChooseUs({ onOpenQuoteModal }: WhyChooseUsProps) {
           <div className="bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden flex flex-col">
             <div className="relative h-60 w-full overflow-hidden bg-slate-800">
               <img
-                src="/src/assets/images/furnace_installation_1794427370552.jpg"
+                src={normalizeImageUrl('/assets/images/furnace_installation_1794427370552.jpg')}
                 alt="High-efficiency furnace installation"
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
+                onError={(e) => handleImageError(e, 'heating')}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
               <div className="absolute top-4 left-4 bg-slate-950/80 text-orange-400 text-xs font-bold px-3 py-1 rounded border border-slate-800">
@@ -116,10 +118,11 @@ export default function WhyChooseUs({ onOpenQuoteModal }: WhyChooseUsProps) {
           <div className="bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden flex flex-col">
             <div className="relative h-60 w-full overflow-hidden bg-slate-800">
               <img
-                src="/src/assets/images/commercial_rooftop_hvac_1794427369351.jpg"
+                src={normalizeImageUrl('/assets/images/commercial_rooftop_hvac_1794427369351.jpg')}
                 alt="Commercial HVAC rooftop systems"
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
+                onError={(e) => handleImageError(e, 'commercial')}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
               <div className="absolute top-4 left-4 bg-slate-950/80 text-sky-400 text-xs font-bold px-3 py-1 rounded border border-slate-800">

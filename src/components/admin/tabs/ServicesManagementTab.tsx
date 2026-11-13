@@ -46,7 +46,7 @@ export default function ServicesManagementTab() {
       category: 'cooling',
       highlights: ['Professional load assessment', 'Certified installation'],
       commonSigns: ['System malfunction', 'Inconsistent temperatures'],
-      imageSrc: '/src/assets/images/hero_hvac_technician_1794427369059.jpg',
+      imageSrc: '/assets/images/hero_hvac_technician_1794427369059.jpg',
       iconName: 'Wrench',
       order: services.length + 1,
       isPublished: true,

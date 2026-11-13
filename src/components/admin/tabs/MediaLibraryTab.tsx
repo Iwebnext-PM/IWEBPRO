@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Upload, Search, Trash2, Copy, Check, Image as ImageIcon, AlertTriangle, FileCode } from 'lucide-react';
 import { useCms } from '../../../context/CmsContext';
 import { MediaItem } from '../../../types/cms';
+import { normalizeImageUrl, handleImageError } from '../../../utils/imageUtils';
 
 export default function MediaLibraryTab() {
   const { media, addMediaItem, deleteMediaItem, services, homepageConfig } = useCms();
@@ -109,10 +110,11 @@ export default function MediaLibraryTab() {
           >
             <div className="relative h-40 bg-slate-950 overflow-hidden flex items-center justify-center">
               <img
-                src={item.fileUrl}
+                src={normalizeImageUrl(item.fileUrl)}
                 alt={item.fileName}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
                 referrerPolicy="no-referrer"
+                onError={(e) => handleImageError(e)}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-2.5 justify-between">
                 <button

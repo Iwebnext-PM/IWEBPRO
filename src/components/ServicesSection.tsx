@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { useCms } from '../context/CmsContext';
 import { CmsService } from '../types/cms';
+import { normalizeImageUrl, handleImageError } from '../utils/imageUtils';
 
 interface ServicesSectionProps {
   onSelectServiceModal: (service: CmsService) => void;
@@ -127,10 +128,11 @@ export default function ServicesSection({
               {/* Card Image Slot */}
               <div className="relative h-44 w-full overflow-hidden bg-slate-800">
                 <img
-                  src={service.imageSrc}
+                  src={normalizeImageUrl(service.imageSrc)}
                   alt={service.name}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   referrerPolicy="no-referrer"
+                  onError={(e) => handleImageError(e, service.category as any)}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
                 

@@ -1,6 +1,7 @@
 import { X, Check, AlertCircle, Phone, ArrowRight, ShieldCheck } from 'lucide-react';
 import { HvacService } from '../types/hvac';
 import { useCms } from '../context/CmsContext';
+import { normalizeImageUrl, handleImageError } from '../utils/imageUtils';
 
 interface ServiceModalProps {
   service: HvacService | null;
@@ -27,10 +28,11 @@ export default function ServiceModal({ service, onClose, onBookService }: Servic
         {/* Modal Header with Image */}
         <div className="relative h-48 sm:h-56 w-full shrink-0 bg-slate-900">
           <img
-            src={service.imageSrc}
+            src={normalizeImageUrl(service.imageSrc)}
             alt={service.name}
             className="w-full h-full object-cover"
             referrerPolicy="no-referrer"
+            onError={(e) => handleImageError(e, service.category as any)}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent" />
           

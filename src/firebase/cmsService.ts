@@ -28,6 +28,36 @@ import {
   AdminUser,
   ActivityLog,
 } from '../types/cms';
+import { normalizeImageUrl } from '../utils/imageUtils';
+
+export function sanitizeService(s: CmsService): CmsService {
+  return {
+    ...s,
+    imageSrc: normalizeImageUrl(s.imageSrc),
+  };
+}
+
+export function sanitizeHomepage(h: HomepageConfig): HomepageConfig {
+  return {
+    ...h,
+    heroBgImage: normalizeImageUrl(h.heroBgImage, '/assets/images/hero_hvac_technician.jpg'),
+    contactCtaBgImage: h.contactCtaBgImage ? normalizeImageUrl(h.contactCtaBgImage) : undefined,
+  };
+}
+
+export function sanitizeAboutUs(a: CmsAboutUs): CmsAboutUs {
+  return {
+    ...a,
+    aboutImage: normalizeImageUrl(a.aboutImage, '/assets/images/hero_hvac_technician.jpg'),
+  };
+}
+
+export function sanitizeMedia(m: MediaItem): MediaItem {
+  return {
+    ...m,
+    fileUrl: normalizeImageUrl(m.fileUrl),
+  };
+}
 
 // Baseline fallback defaults for robust offline/initial bootstrap
 export const DEFAULT_SITE_SETTINGS: SiteSettings = {
@@ -48,7 +78,7 @@ export const DEFAULT_SITE_SETTINGS: SiteSettings = {
   seoTitle: 'Iwebpro – Reliable HVAC Installation & Repair Services',
   seoDescription: 'Keep your home or business comfortable year-round with professional heating, ventilation, and air conditioning solutions from Iwebpro. Call (888) 445-5423.',
   metaKeywords: 'HVAC installation, AC repair, furnace repair, heating maintenance, commercial HVAC',
-  ogImage: '/src/assets/images/hero_hvac_technician_1794427369059.jpg',
+  ogImage: '/assets/images/hero_hvac_technician_1794427369059.jpg',
   canonicalUrl: '',
   robotsIndexing: true,
   updatedAt: new Date().toISOString(),
@@ -58,7 +88,7 @@ export const DEFAULT_HOMEPAGE_CONFIG: HomepageConfig = {
   heroHeading: 'Reliable HVAC Installation & Repair Services You Can Trust',
   heroSubheading: 'Professional heating, ventilation, and air conditioning solutions for homes and commercial facilities.',
   heroDescription: 'Keep your home or business comfortable year-round with professional heating, ventilation, and air conditioning solutions from Iwebpro.',
-  heroBgImage: '/src/assets/images/hero_hvac_technician_1794427369059.jpg',
+  heroBgImage: '/assets/images/hero_hvac_technician_1794427369059.jpg',
   heroPrimaryCtaText: 'Call Now: (888) 445-5423',
   heroPrimaryCtaUrl: 'tel:+18884455423',
   heroSecondaryCtaText: 'Request a Free Quote',
@@ -116,7 +146,7 @@ export const DEFAULT_SERVICES: CmsService[] = [
     category: 'cooling',
     highlights: ['Tailored cooling load calculation', 'High-efficiency central AC and ductless split systems', 'Complete electrical and drain line setup', 'Airflow balancing'],
     commonSigns: ['Unit is over 10–15 years old', 'Frequent costly breakdowns', 'Inconsistent temperatures or high electric bills'],
-    imageSrc: '/src/assets/images/ac_cooling_interior_1794427371083.jpg',
+    imageSrc: '/assets/images/ac_cooling_interior_1794427371083.jpg',
     iconName: 'Snowflake',
     order: 1,
     isPublished: true,
@@ -132,7 +162,7 @@ export const DEFAULT_SERVICES: CmsService[] = [
     category: 'cooling',
     highlights: ['Diagnostic testing for compressors and capacitors', 'Refrigerant leak detection', 'Thermostat recalibration', 'Clearing condensate drains'],
     commonSigns: ['Blowing warm air from vents', 'Grinding, clicking, or squealing sounds', 'Water pooling around unit'],
-    imageSrc: '/src/assets/images/hero_hvac_technician_1794427369059.jpg',
+    imageSrc: '/assets/images/hero_hvac_technician_1794427369059.jpg',
     iconName: 'Wrench',
     order: 2,
     isPublished: true,
@@ -148,7 +178,7 @@ export const DEFAULT_SERVICES: CmsService[] = [
     category: 'heating',
     highlights: ['Heat-loss property assessment', 'High-efficiency heat pump systems', 'Seamless ductwork integration', 'Smart thermostat setup'],
     commonSigns: ['Heating system struggles to maintain set temperature', 'Rising winter energy costs', 'Cold spots in rooms'],
-    imageSrc: '/src/assets/images/furnace_installation_1794427370552.jpg',
+    imageSrc: '/assets/images/furnace_installation_1794427370552.jpg',
     iconName: 'Flame',
     order: 3,
     isPublished: true,
@@ -164,7 +194,7 @@ export const DEFAULT_SERVICES: CmsService[] = [
     category: 'heating',
     highlights: ['Blower motor and burner diagnostics', 'Defrost cycle and valve troubleshooting', 'Safety limit switch testing', 'Airflow safety inspections'],
     commonSigns: ['System blows cold air while on heat', 'Furnace runs continuously', 'Strange burning odors'],
-    imageSrc: '/src/assets/images/furnace_installation_1794427370552.jpg',
+    imageSrc: '/assets/images/furnace_installation_1794427370552.jpg',
     iconName: 'ShieldAlert',
     order: 4,
     isPublished: true,
@@ -180,7 +210,7 @@ export const DEFAULT_SERVICES: CmsService[] = [
     category: 'maintenance',
     highlights: ['Multi-point heating and cooling inspection', 'Evaporator and condenser coil cleaning', 'Capacitor and connection checks', 'Air filter inspection'],
     commonSigns: ['Over 12 months since last tune-up', 'Gradual decline in cooling power', 'Slight rise in utility bills'],
-    imageSrc: '/src/assets/images/hero_hvac_technician_1794427369059.jpg',
+    imageSrc: '/assets/images/hero_hvac_technician_1794427369059.jpg',
     iconName: 'CheckCircle2',
     order: 5,
     isPublished: true,
@@ -196,7 +226,7 @@ export const DEFAULT_SERVICES: CmsService[] = [
     category: 'heating',
     highlights: ['AFUE-rated gas and electric replacements', 'Cracked heat exchanger safety testing', 'Flame sensor cleaning', 'Ventilation draft checks'],
     commonSigns: ['Yellow burner flame instead of steady blue', 'Frequent short-cycling', 'Rattling or banging noises on start'],
-    imageSrc: '/src/assets/images/furnace_installation_1794427370552.jpg',
+    imageSrc: '/assets/images/furnace_installation_1794427370552.jpg',
     iconName: 'Thermometer',
     order: 6,
     isPublished: true,
@@ -212,7 +242,7 @@ export const DEFAULT_SERVICES: CmsService[] = [
     category: 'ductwork',
     highlights: ['Duct inspection and airflow restriction diagnosis', 'Mastic sealing and insulation', 'Damaged duct replacement', 'Custom sheet metal transitions'],
     commonSigns: ['Rooms are noticeably warmer or colder', 'Excessive dust despite filter changes', 'Whistling air sounds in walls'],
-    imageSrc: '/src/assets/images/ac_cooling_interior_1794427371083.jpg',
+    imageSrc: '/assets/images/ac_cooling_interior_1794427371083.jpg',
     iconName: 'Wind',
     order: 7,
     isPublished: true,
@@ -228,7 +258,7 @@ export const DEFAULT_SERVICES: CmsService[] = [
     category: 'commercial',
     highlights: ['Rooftop unit (RTU) installation and crane lifts', 'Planned preventative maintenance agreements', 'Emergency response for critical cooling', 'Ventilation code compliance'],
     commonSigns: ['Rooftop unit vibration or compressor noise', 'Tenant complaints of stuffy spaces', 'High commercial utility bills'],
-    imageSrc: '/src/assets/images/commercial_rooftop_hvac_1794427369351.jpg',
+    imageSrc: '/assets/images/commercial_rooftop_hvac_1794427369351.jpg',
     iconName: 'Building2',
     order: 8,
     isPublished: true,
@@ -247,7 +277,7 @@ export const DEFAULT_ABOUT_US: CmsAboutUs = {
     { title: 'Transparent Communication', description: 'Clear pricing, punctual arrival windows, and respectful treatment of client property.', icon: 'Headphones' },
     { title: 'Long-term Reliability', description: 'Every repair and installation is executed to manufacturer standards for maximum equipment lifespan.', icon: 'CheckCircle' },
   ],
-  aboutImage: '/src/assets/images/hero_hvac_technician_1794427369059.jpg',
+  aboutImage: '/assets/images/hero_hvac_technician_1794427369059.jpg',
   primaryCtaText: 'Contact Our Dispatch Team',
   primaryCtaUrl: '#contact',
   updatedAt: new Date().toISOString(),
@@ -458,7 +488,7 @@ export const cmsService = {
     try {
       const snap = await getDoc(doc(db, 'homepageSections', 'homepage'));
       if (snap.exists()) {
-        return snap.data() as HomepageConfig;
+        return sanitizeHomepage(snap.data() as HomepageConfig);
       }
       return DEFAULT_HOMEPAGE_CONFIG;
     } catch (e) {
@@ -483,7 +513,7 @@ export const cmsService = {
       doc(db, 'homepageSections', 'homepage'),
       (snap) => {
         if (snap.exists()) {
-          cb(snap.data() as HomepageConfig);
+          cb(sanitizeHomepage(snap.data() as HomepageConfig));
         } else {
           cb(DEFAULT_HOMEPAGE_CONFIG);
         }
@@ -500,7 +530,7 @@ export const cmsService = {
       const q = query(collection(db, 'services'), orderBy('order', 'asc'));
       const snap = await getDocs(q);
       if (snap.empty) return DEFAULT_SERVICES;
-      return snap.docs.map((d) => ({ id: d.id, ...d.data() } as CmsService));
+      return snap.docs.map((d) => sanitizeService({ id: d.id, ...d.data() } as CmsService));
     } catch (e) {
       return DEFAULT_SERVICES;
     }
@@ -531,7 +561,7 @@ export const cmsService = {
       q,
       (snap) => {
         if (!snap.empty) {
-          const items = snap.docs.map((d) => ({ id: d.id, ...d.data() } as CmsService));
+          const items = snap.docs.map((d) => sanitizeService({ id: d.id, ...d.data() } as CmsService));
           items.sort((a, b) => a.order - b.order);
           cb(items);
         } else {
@@ -589,7 +619,7 @@ export const cmsService = {
     try {
       const snap = await getDoc(doc(db, 'pages', 'aboutUs'));
       if (snap.exists()) {
-        return snap.data() as CmsAboutUs;
+        return sanitizeAboutUs(snap.data() as CmsAboutUs);
       }
       return DEFAULT_ABOUT_US;
     } catch {
@@ -783,7 +813,7 @@ export const cmsService = {
   async getMedia(): Promise<MediaItem[]> {
     try {
       const snap = await getDocs(collection(db, 'media'));
-      return snap.docs.map((d) => ({ id: d.id, ...d.data() } as MediaItem));
+      return snap.docs.map((d) => sanitizeMedia({ id: d.id, ...d.data() } as MediaItem));
     } catch {
       return [];
     }
@@ -901,6 +931,15 @@ export const cmsService = {
       const homepageSnap = await getDoc(doc(db, 'homepageSections', 'homepage'));
       if (!homepageSnap.exists()) {
         await setDoc(doc(db, 'homepageSections', 'homepage'), DEFAULT_HOMEPAGE_CONFIG);
+      } else {
+        const homeData = homepageSnap.data() as HomepageConfig;
+        if (homeData.heroBgImage && homeData.heroBgImage.startsWith('/src/assets/images/')) {
+          await setDoc(
+            doc(db, 'homepageSections', 'homepage'),
+            { heroBgImage: normalizeImageUrl(homeData.heroBgImage) },
+            { merge: true }
+          );
+        }
       }
 
       const navSnap = await getDoc(doc(db, 'navigation', 'global'));
@@ -912,6 +951,18 @@ export const cmsService = {
       if (servicesSnap.empty) {
         for (const s of DEFAULT_SERVICES) {
           await setDoc(doc(db, 'services', s.id), s);
+        }
+      } else {
+        // Auto-migrate any existing services with /src/assets/images/
+        for (const sDoc of servicesSnap.docs) {
+          const sData = sDoc.data() as CmsService;
+          if (sData.imageSrc && sData.imageSrc.startsWith('/src/assets/images/')) {
+            await setDoc(
+              doc(db, 'services', sDoc.id),
+              { imageSrc: normalizeImageUrl(sData.imageSrc) },
+              { merge: true }
+            );
+          }
         }
       }
 
@@ -943,7 +994,7 @@ export const cmsService = {
           {
             id: 'med-1',
             fileName: 'hero_hvac_technician.jpg',
-            fileUrl: '/src/assets/images/hero_hvac_technician_1794427369059.jpg',
+            fileUrl: '/assets/images/hero_hvac_technician_1794427369059.jpg',
             fileType: 'image/jpeg',
             fileSize: 420000,
             dimensions: '1920x1080',
@@ -953,7 +1004,7 @@ export const cmsService = {
           {
             id: 'med-2',
             fileName: 'commercial_rooftop_hvac.jpg',
-            fileUrl: '/src/assets/images/commercial_rooftop_hvac_1794427369351.jpg',
+            fileUrl: '/assets/images/commercial_rooftop_hvac_1794427369351.jpg',
             fileType: 'image/jpeg',
             fileSize: 380000,
             dimensions: '1440x1080',
@@ -963,7 +1014,7 @@ export const cmsService = {
           {
             id: 'med-3',
             fileName: 'furnace_installation.jpg',
-            fileUrl: '/src/assets/images/furnace_installation_1794427370552.jpg',
+            fileUrl: '/assets/images/furnace_installation_1794427370552.jpg',
             fileType: 'image/jpeg',
             fileSize: 360000,
             dimensions: '1440x1080',
@@ -973,7 +1024,7 @@ export const cmsService = {
           {
             id: 'med-4',
             fileName: 'ac_cooling_interior.jpg',
-            fileUrl: '/src/assets/images/ac_cooling_interior_1794427371083.jpg',
+            fileUrl: '/assets/images/ac_cooling_interior_1794427371083.jpg',
             fileType: 'image/jpeg',
             fileSize: 390000,
             dimensions: '1440x1080',

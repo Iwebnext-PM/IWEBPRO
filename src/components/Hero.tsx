@@ -12,6 +12,7 @@ import {
   Layers
 } from 'lucide-react';
 import { useCms } from '../context/CmsContext';
+import { normalizeImageUrl, handleImageError } from '../utils/imageUtils';
 
 interface HeroProps {
   onOpenQuoteModal: (service?: string) => void;
@@ -51,11 +52,12 @@ export default function Hero({ onOpenQuoteModal }: HeroProps) {
       {/* Background Photography with Scrim Overlay */}
       <div className="absolute inset-0 z-0">
         <img
-          src={homepageConfig.heroBgImage || '/src/assets/images/hero_hvac_technician_1794427369059.jpg'}
+          src={normalizeImageUrl(homepageConfig.heroBgImage, '/assets/images/hero_hvac_technician.jpg')}
           alt="HVAC technician and climate control equipment"
           className="w-full h-full object-cover object-center lg:object-[60%_30%]"
           style={{ opacity: (100 - overlayOpacity) / 100 + 0.15 }}
           referrerPolicy="no-referrer"
+          onError={(e) => handleImageError(e, 'hero')}
         />
         {/* Measured dark gradient scrim for 4.5:1 WCAG contrast */}
         <div
